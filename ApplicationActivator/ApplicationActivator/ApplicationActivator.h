@@ -4,7 +4,7 @@
 
 using namespace System;
 
-namespace ApplicationActivator {
+namespace Ns {
 
 	public ref class ApplicationActivator
 	{
@@ -58,18 +58,29 @@ namespace ApplicationActivator {
 			}
 			return b;
 		}
+
+		// 指定した名前のプロセスをアクティブにする
+		static bool ActivateWindow(String ^iProcessName)
+		{
+			bool b = false;
+			ProcessArray ^hProcess = Diagnostics::Process::GetProcessesByName(iProcessName);
+			for each (Diagnostics::Process ^p in hProcess)
+			{
+				SetForegroundWindow((HWND)p->MainWindowHandle.ToPointer());
+				b = true;
+				break;
+			}
+			return b;
+		}
+
 	protected:
 		property Threading::Mutex ^Mutex;
 		property Diagnostics::Process ^MyProcess
 		{
-		protected: Diagnostics::Process ^get()
-		{
-			return FMyProcess;
-		}
-		private: void set(Diagnostics::Process ^value)
-		{
-			FMyProcess = value;
-		}
+			protected: Diagnostics::Process ^get()
+			{
+				return FMyProcess;
+			}
 		}
 	private:
 		Diagnostics::Process ^FMyProcess;

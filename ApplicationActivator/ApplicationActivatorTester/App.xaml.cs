@@ -15,14 +15,13 @@ namespace ApplicationActivatorTester
     public partial class App : Application
     {
         public string ProgramName { get; set; }
-        private ApplicationActivator.ApplicationActivator Activator { get; set; }
+        private Ns.ApplicationActivator Activator { get; set; }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             var fn = Path.GetFileName(Environment.GetCommandLineArgs()[0]);
             var an = Path.ChangeExtension(fn, null);
-            an = Path.ChangeExtension(an, null);
-            var avr = new ApplicationActivator.ApplicationActivator();
+            var avr = new Ns.ApplicationActivator();
             this.Activator = avr;
             this.ProgramName = an;
             if (avr != null)

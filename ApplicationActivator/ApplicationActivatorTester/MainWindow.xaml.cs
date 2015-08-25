@@ -24,5 +24,10 @@ namespace ApplicationActivatorTester
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Ns.ApplicationActivator.ActivateWindow("CL_FactTerminal");
+        }
     }
 }
