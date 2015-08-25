@@ -27,7 +27,7 @@ ApplicationActivator.h
     This file contains a class declaration.
 
 AssemblyInfo.cpp
-	Contains custom attributes for modifying assembly metadata.
+    Contains custom attributes for modifying assembly metadata.
 
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
@@ -36,3 +36,14 @@ AppWizard uses "TODO:" to indicate parts of the source code you
 should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
+
+■GitHubのリポジトリについて
+  リポジトリの容量が大きくなるためApplicationActivator.sdfはリポジトリから除外しました。
+  それにより、コンパイルするために以下の設定を行ってください。
+  １．依存ファイルのリンク
+      プロジェクトのプロパティ→[リンカー]→[入力]→[追加の依存ファイル]
+      に「%(AdditionalDependencies)」を設定する。
+      これは、プルダウンから[親またはプロジェクトの既定値を継承]を選んでも同じです。
+  ２．ソリューションプラットフォームの変更
+      ソリューションプラットフォームを[x64]（または[x86]）に変更します。
+      Any CPUはC++が対応していないため実行時エラーになります。
